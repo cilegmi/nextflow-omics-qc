@@ -22,33 +22,26 @@ nextflow run main.nf \
   --samplesheet assets/samplesheet.csv \
   --outdir results \
   -profile docker
-For the included test data:
+```
 
+For the included test data:
+```bash
 nextflow run main.nf -profile test
-Input format
+```
+
+## Input format
+```csv
 sample_id,fastq_1,fastq_2
 SAMPLE_A,data/SAMPLE_A_R1.fastq.gz,data/SAMPLE_A_R2.fastq.gz
-
-Reproducibility
+```
+## Reproducibility
 
 The workflow separates orchestration from analysis code, uses a containerized runtime, exposes parameters through Nextflow, and includes a GitHub Actions test that executes the pipeline on every push and pull request.
 
-Design choices
+## Design choices
 
 The analysis step is streaming so that QC metrics can be computed without loading an entire FASTQ file into memory. The repository is intentionally small, but the workflow structure is designed to be extended with established QC tools and downstream modules.
 
-Scope
+## Scope
 
 This repository is a compact engineering example rather than a replacement for established production QC tools. In a production setting, I would benchmark the metrics against trusted tools, add richer validation and test coverage, and integrate the workflow with institutional/HPC or cloud execution profiles.
-
-
-**Important :** les ``` à l’intérieur du README sont **à garder**. Ils servent à afficher les commandes et le CSV comme blocs de code lorsque quelqu’un visite ton repository.
-
-Ensuite, en bas :
-
-**Commit changes**
-
-Message :
-
-```text
-Update README with workflow documentation
