@@ -1,0 +1,6 @@
+work/
+results/
+.nextflow*
+*.log
+.DS_Store
+.idea/
